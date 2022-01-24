@@ -4,7 +4,7 @@ import com.epam.infohandling.composite.Component;
 
 public class ParagraphParser extends AbstractParser {
 
-    private static final String SENTENCE_SEPARATOR = "[\\.\\!\\?\\.{3}]";
+    private static final String SENTENCE_REGEX = "(\\p{Upper}|\\p{Digit}).+?[.!?…]";
 
     public ParagraphParser(Parser successor) {
         super(successor);
@@ -12,6 +12,6 @@ public class ParagraphParser extends AbstractParser {
 
     @Override
     public Component parse(String text) {
-        return parseBySeparator(text, SENTENCE_SEPARATOR);
+        return parseByRegex(text, SENTENCE_REGEX);
     }
 }

@@ -3,6 +3,9 @@ package com.epam.infohandling.parser;
 import com.epam.infohandling.composite.Component;
 import com.epam.infohandling.composite.Composite;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public abstract class AbstractParser implements Parser {
 
     private Parser successor;
@@ -15,11 +18,13 @@ public abstract class AbstractParser implements Parser {
         return successor;
     }
 
-    protected Component parseBySeparator(String text, String separatorRegex) {
+    protected Component parseByRegex(String text, String regex) {
         Composite composite = new Composite();
-        String[] parts = text.split(separatorRegex);
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(text);
 
-        for (String part : parts) {
+        while (matcher.find()) {
+            String part = matcher.group();
             Component component = getSuccessor().parse(part);
             composite.add(component);
         }

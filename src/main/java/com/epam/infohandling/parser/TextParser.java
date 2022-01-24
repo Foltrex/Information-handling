@@ -4,7 +4,7 @@ import com.epam.infohandling.composite.Component;
 
 public class TextParser extends AbstractParser {
 
-    private static final String PARAGRAPH_SEPARATOR = "\n";
+    private static final String PARAGRAPH_REGEX = "[^\\n]+(?:\\n+|$)";
 
     public TextParser(Parser successor) {
         super(successor);
@@ -12,6 +12,6 @@ public class TextParser extends AbstractParser {
 
     @Override
     public Component parse(String text) {
-        return parseBySeparator(text, PARAGRAPH_SEPARATOR);
+        return parseByRegex(text, PARAGRAPH_REGEX);
     }
 }
