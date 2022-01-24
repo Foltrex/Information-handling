@@ -1,4 +1,4 @@
-package com.epam.infohandling;
+package com.epam.infohandling.composite;
 
 public enum LexemeType {
     WORD, EXPRESSION

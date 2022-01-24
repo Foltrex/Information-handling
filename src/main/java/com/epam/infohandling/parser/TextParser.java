@@ -1,9 +1,10 @@
 package com.epam.infohandling.parser;
 
-import com.epam.infohandling.Component;
-import com.epam.infohandling.Composite;
+import com.epam.infohandling.composite.Component;
 
 public class TextParser extends AbstractParser {
+
+    private static final String PARAGRAPH_SEPARATOR = "\n";
 
     public TextParser(Parser successor) {
         super(successor);
@@ -11,14 +12,6 @@ public class TextParser extends AbstractParser {
 
     @Override
     public Component parse(String text) {
-        Composite composite = new Composite();
-        String[] parts = text.split("\n");
-
-        for (String part: parts) {
-            Component paragraph = getSuccessor().parse(part);
-            composite.add(paragraph);
-        }
-
-        return composite;
+        return parseBySeparator(text, PARAGRAPH_SEPARATOR);
     }
 }

@@ -1,5 +1,7 @@
 package com.epam.infohandling;
 
+import com.epam.infohandling.composite.Lexeme;
+
 public class LexemeTest {
 
     public void test() {

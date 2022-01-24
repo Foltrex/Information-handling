@@ -1,4 +1,4 @@
-package com.epam.infohandling;
+package com.epam.infohandling.parser;
 
 import com.epam.infohandling.parser.ParagraphParser;
 import com.epam.infohandling.parser.Parser;

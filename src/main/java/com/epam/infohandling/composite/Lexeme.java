@@ -1,5 +1,6 @@
-package com.epam.infohandling;
+package com.epam.infohandling.composite;
 
+import java.util.List;
 import java.util.Objects;
 
 public class Lexeme implements Component {
@@ -19,6 +20,31 @@ public class Lexeme implements Component {
     public static Lexeme expression(String value) {
         return new Lexeme(value, LexemeType.EXPRESSION);
     }
+
+    public String getValue() {
+        return value;
+    }
+
+    public LexemeType getType() {
+        return type;
+    }
+
+
+    @Override
+    public void add(Component component) {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public List<Component> getComponents() {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public void remove(Component component) {
+        throw new UnsupportedOperationException();
+    }
+
 
     @Override
     public boolean equals(Object o) {

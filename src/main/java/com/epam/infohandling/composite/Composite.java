@@ -1,4 +1,4 @@
-package com.epam.infohandling;
+package com.epam.infohandling.composite;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +12,7 @@ public class Composite implements Component {
     }
 
     public Composite() {
+
     }
 
     public Composite(List <Component> components) {

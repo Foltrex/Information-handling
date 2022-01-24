@@ -1,5 +1,6 @@
 package com.epam.infohandling;
 
+import com.epam.infohandling.exception.InformationHandlingException;
 import com.epam.infohandling.interpreter.*;
 
 import java.util.ArrayList;
@@ -11,7 +12,7 @@ public class ExpressionCalculator {
 
     private static final String SEPARATOR = "\\p{Blank}+";
 
-    public double calculate(String expression, Map<String, Double> parameters) {
+    public double calculate(String expression, Map<String, Double> parameters) throws InformationHandlingException {
         List<AbstractExpression> expressions = parse(expression);
         Context context = new Context();
 
@@ -33,10 +34,10 @@ public class ExpressionCalculator {
             char temp = lexeme.charAt(0);
             switch (temp) {
                 case '+':
-                    expressions.add(new TerminalExpressionPlus());
+                    expressions.add(new TerminalExpressionAdd());
                     break;
                 case '-':
-                    expressions.add(new TerminalExpressionMinus());
+                    expressions.add(new TerminalExpressionSubtract());
                     break;
                 case '*':
                     expressions.add(new TerminalExpressionMultiply());
