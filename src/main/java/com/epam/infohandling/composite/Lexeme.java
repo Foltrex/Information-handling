@@ -41,8 +41,8 @@ public class Lexeme implements Component {
     }
 
     @Override
-    public void remove(Component component) {
-        throw new UnsupportedOperationException();
+    public int size() {
+        return value.length();
     }
 
 

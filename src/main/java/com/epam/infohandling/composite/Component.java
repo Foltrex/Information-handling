@@ -7,5 +7,5 @@ public interface Component {
 
     List<Component> getComponents();
 
-    void remove(Component component);
+    int size();
 }

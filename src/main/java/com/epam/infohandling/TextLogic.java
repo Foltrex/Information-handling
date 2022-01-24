@@ -26,19 +26,41 @@ public class TextLogic {
         return parser.parse(text);
     }
 
-    public Component calculate(Composite text, Map<String, Double> parameters) throws InformationHandlingException {
-        return calculateExpressionsInComponent(text, parameters);
+    public String restoreText(Composite text) {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (Component paragraph : text.getComponents()) {
+            restore(paragraph, stringBuilder);
+            stringBuilder.append('\n');
+        }
+
+        return String.valueOf(stringBuilder);
+    }
+
+    // recursive function
+    private void restore(Component component, StringBuilder stringBuilder) {
+        if (component.getClass() == Lexeme.class) {
+            Lexeme lexeme = (Lexeme) component;
+            stringBuilder.append(lexeme);
+            return;
+        }
+
+        for (Component childComponent : component.getComponents()) {
+            restore(childComponent, stringBuilder);
+            stringBuilder.append(' ');
+        }
     }
 
 
-    private Component calculateExpressionsInComponent(Component component, Map<String, Double> parameters) throws InformationHandlingException {
+    // recursive function
+    public Component calculate(Component component, Map<String, Double> parameters) throws InformationHandlingException {
         Component calculateExpression = null;
 
         if (component.getClass() == Composite.class) {
             Composite composite = (Composite) component;
             List<Component> calculatedComponents = new ArrayList<>();
             for (Component compositeComponent: composite.getComponents()) {
-                Component calculatedComponent = calculateExpressionsInComponent(compositeComponent, parameters);
+                Component calculatedComponent = calculate(compositeComponent, parameters);
+                calculatedComponents.add(calculatedComponent);
             }
 
             calculateExpression = new Composite(calculatedComponents);
@@ -59,4 +81,6 @@ public class TextLogic {
 
         return calculateExpression;
     }
+
+    
 }

@@ -7,16 +7,18 @@ public class Composite implements Component {
 
     private final List<Component> children = new ArrayList<Component>();
 
-    public void add(Component child) {
-        children.add(child);
-    }
 
     public Composite() {
-
     }
 
     public Composite(List <Component> components) {
         children.addAll(components);
+    }
+
+
+    @Override
+    public void add(Component child) {
+        children.add(child);
     }
 
     @Override
@@ -25,7 +27,7 @@ public class Composite implements Component {
     }
 
     @Override
-    public void remove(Component component) {
-        children.remove(component);
+    public int size() {
+        return children.size();
     }
 }
