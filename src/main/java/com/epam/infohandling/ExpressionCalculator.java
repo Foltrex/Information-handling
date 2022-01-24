@@ -13,7 +13,7 @@ public class ExpressionCalculator {
     private static final String SEPARATOR = "\\p{Blank}+";
 
     public double calculate(String expression, Map<String, Double> parameters) throws InformationHandlingException {
-        List<AbstractExpression> expressions = parse(expression);
+        List<AbstractExpression> expressions = parse(expression, parameters);
         Context context = new Context();
 
         for (AbstractExpression terminal: expressions) {
@@ -23,7 +23,7 @@ public class ExpressionCalculator {
         return context.popValue();
     }
 
-    public List<AbstractExpression> parse (String expression) {
+    private List<AbstractExpression> parse (String expression, Map<String, Double> parameters) throws InformationHandlingException {
         List<AbstractExpression> expressions = new ArrayList<>();
 
         for (String lexeme: expression.split(SEPARATOR)) {
@@ -31,24 +31,32 @@ public class ExpressionCalculator {
                 continue;
             }
 
-            char temp = lexeme.charAt(0);
-            switch (temp) {
-                case '+':
-                    expressions.add(new TerminalExpressionAdd());
+            switch (lexeme) {
+                case "+":
+                    expressions.add(new TerminalExpressionAddition());
                     break;
-                case '-':
-                    expressions.add(new TerminalExpressionSubtract());
+                case "-":
+                    expressions.add(new TerminalExpressionSubtraction());
                     break;
-                case '*':
-                    expressions.add(new TerminalExpressionMultiply());
+                case "*":
+                    expressions.add(new TerminalExpressionMultiplication());
                     break;
-                case '/':
-                    expressions.add(new TerminalExpressionDivide());
+                case "/":
+                    expressions.add(new TerminalExpressionDivision());
                     break;
                 default:
                     Scanner scanner = new Scanner(lexeme);
                     if (scanner.hasNextDouble()) {
-                        expressions.add(new NonTerminalExpression(scanner.nextDouble()));
+                        double value = scanner.nextDouble();
+                        expressions.add(new NonTerminalExpression(value));
+                    } else {
+                        String key = scanner.next();
+                        if (parameters.containsKey(key)) {
+                            double value = parameters.get(key);
+                            expressions.add(new NonTerminalExpression(value));
+                        } else {
+                            throw new InformationHandlingException("Getting the value of a missing key");
+                        }
                     }
             }
         }
