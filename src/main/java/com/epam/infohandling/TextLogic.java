@@ -9,6 +9,7 @@ import com.epam.infohandling.parser.ChainBuilder;
 import com.epam.infohandling.parser.Parser;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 
@@ -82,5 +83,27 @@ public class TextLogic {
         return calculateExpression;
     }
 
-    
+
+    public Composite sortParagraphsBySentencesCount(Composite text) {
+        List<Component> sortedParagraphs = new ArrayList<>(text.getComponents());
+        sortedParagraphs.sort(Comparator.comparingDouble(Component::size));
+        return new Composite(sortedParagraphs);
+    }
+
+
+    public Composite sortSentencesByWordsLength(Composite text) {
+        Composite textWithSortedSentences = new Composite();
+        for (Component paragraph : text.getComponents()) {
+            Composite paragraphWithSortedSentences = new Composite();
+            for (Component sentence : paragraph.getComponents()) {
+                List<Component> sortedWords = new ArrayList<>(sentence.getComponents());
+                sortedWords.sort(Comparator.comparingInt(Component::size));
+                Composite sortedSentence = new Composite(sortedWords);
+                paragraphWithSortedSentences.add(sortedSentence);
+            }
+            textWithSortedSentences.add(paragraphWithSortedSentences);
+        }
+
+        return textWithSortedSentences;
+    }
 }

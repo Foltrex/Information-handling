@@ -56,11 +56,18 @@ public class Lexeme implements Component {
         }
 
         Lexeme lexeme = (Lexeme) o;
-        return Objects.equals(value, lexeme.value) && type == lexeme.type;
+        return Objects.equals(value, lexeme.getValue()) && type == lexeme.getType();
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(value, type);
+    }
+
+    @Override
+    public String toString() {
+        return "Lexeme{" +
+                "value='" + value + '\'' +
+                '}';
     }
 }
