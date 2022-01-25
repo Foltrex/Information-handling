@@ -2,7 +2,6 @@ package com.epam.infohandling;
 
 import com.epam.infohandling.data.DataReader;
 import com.epam.infohandling.exception.DataException;
-import com.epam.infohandling.exception.InformationHandlingException;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -15,6 +14,7 @@ public class DataReaderTest {
             "        \tIt is a [1200  5 /] established fact that a reader will be of a page when looking at its layout.\n" +
             "        \tBye.\n";
 
+    
     @Test
     public void testReadShouldReturnCorrectTextWhenFileIsValid() throws DataException {
         //given

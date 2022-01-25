@@ -4,12 +4,9 @@ import com.epam.infohandling.composite.Composite;
 import com.epam.infohandling.composite.Lexeme;
 import com.epam.infohandling.parser.SentenceParser;
 import org.junit.Assert;
-import org.junit.BeforeClass;
 import org.junit.Test;
-import org.mockito.Mockito;
 
 import java.util.Arrays;
-import java.util.List;
 
 public class SentenceParserTest {
 

@@ -14,13 +14,14 @@ import java.util.Arrays;
 
 public class TextParserTest {
 
-    private static final String TEXT = "\tI'm busy.Let's talk later.\n\tOk.";
+    private static final String TEXT = "I'm busy. Let's talk later.\nOk.";
 
-    private static final String FIRST_PARAGRAPH_TEXT = "I'm busy. Let's talk later.";
+    private static final String FIRST_PARAGRAPH_TEXT = "I'm busy. Let's talk later.\n";
     private static final Composite FIRST_PARAGRAPH = new Composite();
 
-    private static final String SECOND_PARAGRAPH_TEXT = "Ok";
+    private static final String SECOND_PARAGRAPH_TEXT = "Ok.";
     private static final Composite SECOND_PARAGRAPH = new Composite();
+
 
     @BeforeClass
     public static void initializeFirstParagraph() {
@@ -38,8 +39,9 @@ public class TextParserTest {
         SECOND_PARAGRAPH.add(firstSentence);
     }
 
+
     @Test
-    public void testParseShouldReturnCorrectComponentWhenTextIsValid() {
+    public void testParseShouldReturnCorrectTextWhenDataIsValid() {
         // given
         ParagraphParser paragraphParser = Mockito.mock(ParagraphParser.class);
         TextParser textParser = new TextParser(paragraphParser);

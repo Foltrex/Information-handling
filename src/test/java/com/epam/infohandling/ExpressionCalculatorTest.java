@@ -11,10 +11,11 @@ import java.util.Map;
 
 public class ExpressionCalculatorTest {
 
+    private final ExpressionCalculator expressionCalculator = new ExpressionCalculator();
+    private final Map<String, Double> parameters = new HashMap<>();
+
     private static final double ACCURACY = 1e-6;
 
-    private final ExpressionCalculator expressionCalculator = new ExpressionCalculator();
-    private final Map<String, Double> parameters = new HashMap<String, Double>();
 
     @Before
     public void initializeParameters() {
@@ -31,7 +32,7 @@ public class ExpressionCalculatorTest {
     }
 
     @Test
-    public void testCalculateShouldReturnCorrectDoubleSumWhenExpressionIsCorrect() throws InformationHandlingException {
+    public void testCalculateShouldCalculateSumWhenExpressionIsCorrect() throws InformationHandlingException {
         //given
         String expression = "[x 40 +]";
 
@@ -43,7 +44,7 @@ public class ExpressionCalculatorTest {
     }
 
     @Test
-    public void testCalculateShouldReturnCorrectDoubleSubtractionWhenExpressionIsCorrect() throws InformationHandlingException {
+    public void testCalculateShouldCalculateSubtractionWhenExpressionIsCorrect() throws InformationHandlingException {
         //given
         String expression = "[x 40 -]";
 
@@ -55,7 +56,7 @@ public class ExpressionCalculatorTest {
     }
 
     @Test
-    public void testCalculateShouldReturnCorrectDoubleMultiplyingWhenExpressionIsCorrect() throws InformationHandlingException {
+    public void testCalculateShouldCalculateMultiplyingWhenExpressionIsCorrect() throws InformationHandlingException {
         //given
         String expression = "[x 40 *]";
 
@@ -67,7 +68,7 @@ public class ExpressionCalculatorTest {
     }
 
     @Test
-    public void testCalculateShouldReturnCorrectDoubleDividingWhenExpressionIsCorrect() throws InformationHandlingException {
+    public void testCalculateShouldCalculateDividingWhenExpressionIsCorrect() throws InformationHandlingException {
         //given
         String expression = "[x 40 /]";
 

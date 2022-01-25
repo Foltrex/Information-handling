@@ -37,7 +37,7 @@ public class TextLogicTest {
     }
 
     @Test
-    public void testCalculateShouldCalculateExpressionsInCompositeWhenCompositeIsGiven() throws InformationHandlingException {
+    public void testCalculateShouldReturnCompositeWithCalculatedExpressionsWhenCompositeIsGiven() throws InformationHandlingException {
         // given
         Map<String, Double> parameters = new HashMap<>();
         parameters.put("x", 28.0);
@@ -53,7 +53,7 @@ public class TextLogicTest {
     }
 
     @Test
-    public void testSortParagraphsBySentencesCountShouldReturnParagraphsSortedBySentencesCountWhenCompositeIsGiven() {
+    public void testSortParagraphsBySentencesCountShouldReturnTextWithParagraphsSortedBySentencesCountWhenCompositeIsGiven() {
         // given
         Composite textWithUnsortedParagraphs = createTextWithUnsortedParagraphs();
 
@@ -97,6 +97,7 @@ public class TextLogicTest {
         Composite thirdParagraph = new Composite(Arrays.asList(sentence, sentence, sentence));
 
         Composite text = new Composite(Arrays.asList(firstParagraph, secondParagraph, thirdParagraph));
+
         return text;
     }
 
@@ -127,6 +128,5 @@ public class TextLogicTest {
 
         return text;
     }
-
 
 }
