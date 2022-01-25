@@ -2,6 +2,8 @@ package com.epam.infohandling.logic;
 
 import com.epam.infohandling.exception.InformationHandlingException;
 import com.epam.infohandling.interpreter.*;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,10 +11,13 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class ExpressionCalculator {
+    private static final Logger LOGGER = LogManager.getLogger(ExpressionCalculator.class);
 
     private static final String SEPARATOR = "\\p{Blank}+";
 
     public double calculate(String expression, Map<String, Double> parameters) throws InformationHandlingException {
+        LOGGER.debug("Calculating: " + expression);
+
         List<AbstractExpression> expressions = parse(expression, parameters);
         Context context = new Context();
 

@@ -5,9 +5,10 @@ import com.epam.infohandling.composite.Composite;
 import com.epam.infohandling.composite.Lexeme;
 import com.epam.infohandling.composite.LexemeType;
 import com.epam.infohandling.exception.InformationHandlingException;
-import com.epam.infohandling.logic.ExpressionCalculator;
 import com.epam.infohandling.parser.ChainBuilder;
 import com.epam.infohandling.parser.Parser;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.Comparator;
