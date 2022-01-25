@@ -3,6 +3,9 @@ package com.epam.infohandling.interpreter;
 public class TerminalExpressionSubtraction implements AbstractExpression {
     @Override
     public void interpret(Context context) {
-        context.pushValue(-context.popValue() + context.popValue());
+        double secondOperand = context.popValue();
+        double firstOperand = context.popValue();
+
+        context.pushValue(firstOperand - secondOperand);
     }
 }

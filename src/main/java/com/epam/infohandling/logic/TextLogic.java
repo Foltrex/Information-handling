@@ -1,10 +1,11 @@
-package com.epam.infohandling;
+package com.epam.infohandling.logic;
 
 import com.epam.infohandling.composite.Component;
 import com.epam.infohandling.composite.Composite;
 import com.epam.infohandling.composite.Lexeme;
 import com.epam.infohandling.composite.LexemeType;
 import com.epam.infohandling.exception.InformationHandlingException;
+import com.epam.infohandling.logic.ExpressionCalculator;
 import com.epam.infohandling.parser.ChainBuilder;
 import com.epam.infohandling.parser.Parser;
 

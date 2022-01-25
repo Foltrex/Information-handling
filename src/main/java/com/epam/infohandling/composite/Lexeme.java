@@ -66,8 +66,6 @@ public class Lexeme implements Component {
 
     @Override
     public String toString() {
-        return "Lexeme{" +
-                "value='" + value + '\'' +
-                '}';
+        return value;
     }
 }

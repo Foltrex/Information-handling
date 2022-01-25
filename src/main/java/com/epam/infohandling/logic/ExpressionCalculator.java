@@ -1,4 +1,4 @@
-package com.epam.infohandling;
+package com.epam.infohandling.logic;
 
 import com.epam.infohandling.exception.InformationHandlingException;
 import com.epam.infohandling.interpreter.*;
@@ -24,8 +24,9 @@ public class ExpressionCalculator {
     }
 
     private List<AbstractExpression> parse (String expression, Map<String, Double> parameters) throws InformationHandlingException {
-        List<AbstractExpression> expressions = new ArrayList<>();
+        List<AbstractExpression> expressionList = new ArrayList<>();
 
+        expression = expression.replaceAll("[\\[\\]]", "");
         for (String lexeme: expression.split(SEPARATOR)) {
             if (lexeme.isEmpty()) {
                 continue;
@@ -33,27 +34,27 @@ public class ExpressionCalculator {
 
             switch (lexeme) {
                 case "+":
-                    expressions.add(new TerminalExpressionAddition());
+                    expressionList.add(new TerminalExpressionAddition());
                     break;
                 case "-":
-                    expressions.add(new TerminalExpressionSubtraction());
+                    expressionList.add(new TerminalExpressionSubtraction());
                     break;
                 case "*":
-                    expressions.add(new TerminalExpressionMultiplication());
+                    expressionList.add(new TerminalExpressionMultiplication());
                     break;
                 case "/":
-                    expressions.add(new TerminalExpressionDivision());
+                    expressionList.add(new TerminalExpressionDivision());
                     break;
                 default:
                     Scanner scanner = new Scanner(lexeme);
                     if (scanner.hasNextDouble()) {
                         double value = scanner.nextDouble();
-                        expressions.add(new NonTerminalExpression(value));
+                        expressionList.add(new NonTerminalExpression(value));
                     } else {
                         String key = scanner.next();
                         if (parameters.containsKey(key)) {
                             double value = parameters.get(key);
-                            expressions.add(new NonTerminalExpression(value));
+                            expressionList.add(new NonTerminalExpression(value));
                         } else {
                             throw new InformationHandlingException("Getting the value of a missing key");
                         }
@@ -61,6 +62,6 @@ public class ExpressionCalculator {
             }
         }
 
-        return expressions;
+        return expressionList;
     }
 }
