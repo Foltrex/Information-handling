@@ -2,25 +2,19 @@ package com.epam.infohandling;
 
 import com.epam.infohandling.exception.InformationHandlingException;
 import com.epam.infohandling.logic.ExpressionCalculator;
+import com.google.common.collect.ImmutableMap;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 
-import java.util.HashMap;
 import java.util.Map;
 
 public class ExpressionCalculatorTest {
 
     private final ExpressionCalculator expressionCalculator = new ExpressionCalculator();
-    private final Map<String, Double> parameters = new HashMap<>();
+    private final Map<String, Double> parameters = ImmutableMap.of("x", 10.0);
 
     private static final double ACCURACY = 1e-6;
 
-
-    @Before
-    public void initializeParameters() {
-        parameters.put("x", 10.0);
-    }
 
     @Test(expected = InformationHandlingException.class)
     public void testCalculateShouldThrowExceptionWhenExpressionHasUnknownVariable() throws InformationHandlingException {
