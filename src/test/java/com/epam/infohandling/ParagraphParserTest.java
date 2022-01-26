@@ -24,7 +24,7 @@ public class ParagraphParserTest {
 
 
     @Test
-    public void testParseShouldReturnCorrectComponentWhenTextIsValid() {
+    public void testParseShouldReturnCorrectParagraphWhenDataIsValid() {
         // given
         SentenceParser sentenceParser = Mockito.mock(SentenceParser.class);
         ParagraphParser paragraphParser = new ParagraphParser(sentenceParser);

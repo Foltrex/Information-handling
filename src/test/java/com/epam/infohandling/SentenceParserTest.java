@@ -13,7 +13,7 @@ public class SentenceParserTest {
     private static final String SENTENCE = "Let's talk later.";
 
     @Test
-    public void testParseShouldReturnCorrectComponentWhenSentenceIsValid() {
+    public void testParseShouldReturnCorrectSentenceWhenDataIsValid() {
         // given
         SentenceParser sentenceParser = new SentenceParser(null);
         Composite expectedSentence = new Composite(Arrays.asList(Lexeme.word("Let's"),
