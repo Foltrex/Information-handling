@@ -31,16 +31,6 @@ public class Lexeme implements Component {
 
 
     @Override
-    public void add(Component component) {
-        throw new UnsupportedOperationException();
-    }
-
-    @Override
-    public List<Component> getComponents() {
-        throw new UnsupportedOperationException();
-    }
-
-    @Override
     public int size() {
         return value.length();
     }

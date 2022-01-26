@@ -17,15 +17,14 @@ public class Composite implements Component {
     }
 
 
-    @Override
     public void add(Component child) {
         components.add(child);
     }
 
-    @Override
     public List<Component> getComponents() {
         return components;
     }
+
 
     @Override
     public int size() {
