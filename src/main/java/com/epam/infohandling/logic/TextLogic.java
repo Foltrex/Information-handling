@@ -47,7 +47,8 @@ public class TextLogic {
             return;
         }
 
-        for (Component childComponent : component.getComponents()) {
+        Composite composite = (Composite) component;
+        for (Component childComponent : composite.getComponents()) {
             restore(childComponent, stringBuilder);
             stringBuilder.append(' ');
         }
@@ -95,9 +96,11 @@ public class TextLogic {
 
     public Composite sortSentencesByWordsLength(Composite text) {
         Composite textWithSortedSentences = new Composite();
-        for (Component paragraph : text.getComponents()) {
+        for (Component paragraphComponent : text.getComponents()) {
             Composite paragraphWithSortedSentences = new Composite();
-            for (Component sentence : paragraph.getComponents()) {
+            Composite paragraph = (Composite) paragraphComponent;
+            for (Component sentenceComponent : paragraph.getComponents()) {
+                Composite sentence = (Composite) sentenceComponent;
                 List<Component> sortedWords = new ArrayList<>(sentence.getComponents());
                 sortedWords.sort(Comparator.comparingInt(Component::size));
                 Composite sortedSentence = new Composite(sortedWords);

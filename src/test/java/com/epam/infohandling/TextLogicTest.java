@@ -5,6 +5,7 @@ import com.epam.infohandling.composite.Lexeme;
 import com.epam.infohandling.exception.InformationHandlingException;
 import com.epam.infohandling.logic.ExpressionCalculator;
 import com.epam.infohandling.logic.TextLogic;
+import com.google.common.collect.ImmutableMap;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -39,8 +40,7 @@ public class TextLogicTest {
     @Test
     public void testCalculateShouldReturnCompositeWithCalculatedExpressionsWhenCompositeIsGiven() throws InformationHandlingException {
         // given
-        Map<String, Double> parameters = new HashMap<>();
-        parameters.put("x", 28.0);
+        Map<String, Double> parameters = ImmutableMap.of("x", 28.0);
         Composite text = createTextFromLexemes();
 
         Composite expectedCalculatedText = createCalculatedText();
