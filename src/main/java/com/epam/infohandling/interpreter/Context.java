@@ -4,7 +4,7 @@ import java.util.ArrayDeque;
 
 public class Context {
 
-    private ArrayDeque<Double> contextValues = new ArrayDeque<>();
+    private final ArrayDeque<Double> contextValues = new ArrayDeque<>();
 
     public Double popValue() {
         return contextValues.pop();

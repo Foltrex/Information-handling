@@ -96,9 +96,11 @@ public class TextLogic {
 
     public Composite sortSentencesByWordsLength(Composite text) {
         Composite textWithSortedSentences = new Composite();
+
         for (Component paragraphComponent : text.getComponents()) {
             Composite paragraphWithSortedSentences = new Composite();
             Composite paragraph = (Composite) paragraphComponent;
+
             for (Component sentenceComponent : paragraph.getComponents()) {
                 Composite sentence = (Composite) sentenceComponent;
                 List<Component> sortedWords = new ArrayList<>(sentence.getComponents());

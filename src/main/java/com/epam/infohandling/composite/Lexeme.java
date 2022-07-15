@@ -1,12 +1,12 @@
 package com.epam.infohandling.composite;
 
-import java.util.List;
-import java.util.Objects;
+import lombok.Value;
 
+@Value
 public class Lexeme implements Component {
 
-    private String value;
-    private LexemeType type;
+    String value;
+    LexemeType type;
 
     public Lexeme(String value, LexemeType type) {
         this.value = value;
@@ -21,41 +21,9 @@ public class Lexeme implements Component {
         return new Lexeme(value, LexemeType.EXPRESSION);
     }
 
-    public String getValue() {
-        return value;
-    }
-
-    public LexemeType getType() {
-        return type;
-    }
-
-
     @Override
     public int size() {
         return value.length();
     }
 
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (!(o instanceof Lexeme)) {
-            return false;
-        }
-
-        Lexeme lexeme = (Lexeme) o;
-        return Objects.equals(value, lexeme.getValue()) && type == lexeme.getType();
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(value, type);
-    }
-
-    @Override
-    public String toString() {
-        return value;
-    }
 }

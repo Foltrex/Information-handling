@@ -12,6 +12,6 @@ public class ParagraphParser extends AbstractParser {
 
     @Override
     public Component parse(String text) {
-        return parseByRegex(text, SENTENCE_REGEX);
+        return super.parseByRegex(text, SENTENCE_REGEX);
     }
 }

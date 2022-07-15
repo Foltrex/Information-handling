@@ -27,7 +27,7 @@ public class DataReader {
              BufferedReader bufferedReader = new BufferedReader(fileReader)) {
 
             for (String line = bufferedReader.readLine(); line != null; line = bufferedReader.readLine()) {
-                text.append(line + LINE_FEED);
+                text.append(line).append(LINE_FEED);
             }
 
         } catch (IOException ex) {
